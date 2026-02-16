@@ -33,11 +33,13 @@ export default function GameEndDialog({ isOpen, onRestart, scores }: GameEndDial
             <PartyPopper className="text-primary" />
             Game Over!
           </AlertDialogTitle>
-          <AlertDialogDescription className="text-center pt-4">
-            <p className="text-lg font-bold mb-2">{winnerMessage}</p>
-            <p>Final Score:</p>
-            <p>Player 1: {scores.player1}</p>
-            <p>Player 2: {scores.player2}</p>
+          <AlertDialogDescription asChild>
+            <div className="text-center pt-4">
+              <p className="text-lg font-bold mb-2">{winnerMessage}</p>
+              <p>Final Score:</p>
+              <p>Player 1: {scores.player1}</p>
+              <p>Player 2: {scores.player2}</p>
+            </div>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
