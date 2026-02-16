@@ -124,4 +124,46 @@ body {
   .card-front {
     transform: rotateY(180deg);
   }
+  
+  .scene {
+    width: 200px;
+    height: 80px;
+    perspective: 500px;
+  }
+
+  .cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: translateZ(-40px);
+    transition: transform 0.5s;
+  }
+
+  .scene:hover .cube {
+    transform: translateZ(-40px) rotateX(-90deg);
+  }
+
+  .cube .side {
+    position: absolute;
+    width: 200px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: hsl(var(--primary-foreground));
+    border: 2px solid hsl(var(--primary));
+  }
+
+  .side.front {
+    background: hsl(var(--primary));
+    transform: rotateY(0deg) translateZ(40px);
+  }
+  
+  .side.top {
+    background: hsl(var(--accent));
+    transform: rotateX(90deg) translateZ(40px);
+  }
 }

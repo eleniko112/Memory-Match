@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'MatchMasters',
-  description: 'A 2-player local memory card matching game.',
+  title: 'Memory Match',
+  description: 'A memory card matching game.',
 };
 
 export default function RootLayout({

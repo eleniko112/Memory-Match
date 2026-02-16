@@ -5,7 +5,7 @@ export type Card = {
   isMatched: boolean;
 };
 
-const ICONS = ["🍎", "🍌", "🍇", "⭐", "🔥", "🎮", "🎲", "🐱", "🐶", "🤖", "🦄", "🍕"];
+const ICONS = ["🍎", "🍌", "🍇", "⭐", "🔥", "🎮", "🎲", "🐱", "🐶", "🤖", "🦄", "🍕", "⚽️", "🏀", "🏈", "🎱", "🎳", "🎯"];
 
 const shuffleArray = <T>(array: T[]): T[] => {
   const shuffledArray = [...array];
@@ -19,8 +19,13 @@ const shuffleArray = <T>(array: T[]): T[] => {
   return shuffledArray;
 };
 
-export const initializeBoard = (): Card[] => {
-  const cardValues = [...ICONS, ...ICONS];
+export const initializeBoard = (cardCount: number): Card[] => {
+  if ((cardCount % 2) !== 0) {
+    throw new Error("Card count must be an even number.");
+  }
+  const pairCount = cardCount / 2;
+  const iconsForGame = ICONS.slice(0, pairCount);
+  const cardValues = [...iconsForGame, ...iconsForGame];
   const shuffledValues = shuffleArray(cardValues);
 
   return shuffledValues.map((value, index) => ({

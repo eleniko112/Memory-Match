@@ -1,36 +1,42 @@
 import { cn } from "@/lib/utils";
 
 type ScoreboardProps = {
-  scores: { player1: number; player2: number };
-  currentPlayer: "player1" | "player2";
+  scores: number[];
+  currentPlayer: number;
 };
+
+const playerColors = [
+    "text-primary", "text-accent", "text-chart-2", "text-chart-4"
+];
+
+const playerBg = [
+    "bg-primary/20 border-primary",
+    "bg-accent/20 border-accent",
+    "bg-chart-2/20 border-chart-2",
+    "bg-chart-4/20 border-chart-4",
+]
 
 export default function Scoreboard({ scores, currentPlayer }: ScoreboardProps) {
   return (
-    <div className="flex justify-around items-center w-full text-center">
-      <div
-        className={cn(
-          "p-4 rounded-lg transition-all duration-300 w-40",
-          currentPlayer === "player1"
-            ? "bg-primary/20 scale-105 border-2 border-primary"
-            : "opacity-70"
-        )}
-      >
-        <p className="text-lg font-bold text-primary">Player 1</p>
-        <p className="text-4xl font-black text-foreground">{scores.player1}</p>
-      </div>
-      <div className="text-2xl font-bold text-muted-foreground">- VS -</div>
-      <div
-        className={cn(
-          "p-4 rounded-lg transition-all duration-300 w-40",
-          currentPlayer === "player2"
-            ? "bg-accent/20 scale-105 border-2 border-accent"
-            : "opacity-70"
-        )}
-      >
-        <p className="text-lg font-bold text-accent">Player 2</p>
-        <p className="text-4xl font-black text-foreground">{scores.player2}</p>
-      </div>
+    <div className="flex justify-around items-center w-full text-center gap-2 flex-wrap">
+      {scores.map((score, index) => (
+         <div key={index} className="flex items-center">
+            <div
+                className={cn(
+                "p-4 rounded-lg transition-all duration-300 w-32",
+                currentPlayer === index
+                    ? `${playerBg[index % playerBg.length]} scale-105 border-2`
+                    : "opacity-70"
+                )}
+            >
+                <p className={cn("text-lg font-bold", playerColors[index % playerColors.length])}>Player {index + 1}</p>
+                <p className="text-4xl font-black text-foreground">{score}</p>
+            </div>
+            {index < scores.length - 1 && (
+                 <div className="text-2xl font-bold text-muted-foreground mx-2 hidden sm:block">VS</div>
+            )}
+         </div>
+      ))}
     </div>
   );
 }
