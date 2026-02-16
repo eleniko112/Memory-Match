@@ -9,7 +9,7 @@ type GameBoardProps = {
 
 export default function GameBoard({ board, onCardClick, disabled }: GameBoardProps) {
   return (
-    <div className="grid grid-cols-4 gap-2 sm:gap-4 w-full max-w-lg aspect-square">
+    <div className="grid grid-cols-6 gap-2 sm:gap-4 w-full max-w-2xl aspect-[3/2]">
       {board.map((card, index) => (
         <Card
           key={card.id}

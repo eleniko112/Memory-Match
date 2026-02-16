@@ -5,7 +5,7 @@ export type Card = {
   isMatched: boolean;
 };
 
-const ICONS = ["🍎", "🍌", "🍇", "⭐", "🔥", "🎮", "🎲", "🐱"];
+const ICONS = ["🍎", "🍌", "🍇", "⭐", "🔥", "🎮", "🎲", "🐱", "🐶", "🤖", "🦄", "🍕"];
 
 const shuffleArray = <T>(array: T[]): T[] => {
   const shuffledArray = [...array];
